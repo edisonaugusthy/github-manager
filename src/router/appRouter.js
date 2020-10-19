@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NoDataFound from '../components/NotFoundPage/404Page';
 import Home from '../components/home/Home';
-
+import AddNew from '../components/add-new/addNew'
 export default class AppRouter extends React.Component {
 
     render() {
@@ -17,7 +17,15 @@ export default class AppRouter extends React.Component {
                                 <Home {...props} />
                             )}
                         />
+                        <Route
+                            path="/AddNew"
+                            exact={true}
+                            render={(props) => (
+                                <AddNew {...props} />
+                            )}
+                        />
                         <Route component={NoDataFound} />
+                        <Redirect exact from="/" to="Home" />
                     </Switch>
                 </div>
             </BrowserRouter>
